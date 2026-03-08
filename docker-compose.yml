@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+
+  banco:
+    image: postgres
+    environment:
+      POSTGRES_DB: Padaria
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2009
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - banco
